@@ -6,7 +6,7 @@ type Response[T any] struct {
 }
 
 type ServerResult struct {
-	Server string `json:server`
+	Server string `json:"server"`
 }
 
 type AccountDetails struct {

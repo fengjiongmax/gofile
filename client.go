@@ -6,7 +6,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"mime/multipart"
 	"net/http"
 	"net/url"
@@ -27,7 +26,7 @@ func RequestResponse[T any](c *Client, req *http.Request) (*T, error) {
 		return nil, err
 	}
 	defer rsp.Body.Close()
-	buff, err := ioutil.ReadAll(rsp.Body)
+	buff, err := io.ReadAll(rsp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -166,25 +165,25 @@ func (c *Client) GetContent(contentId string) (*ContentResult, error) {
 	}, nil)
 }
 
-//
 // SetFolderOption
 //
-// Set an option on a folder
+// # Set an option on a folder
 //
 // Parameters
-//  required token
-//    The access token of an account. Can be retrieved from the profile page.
-//  required folderId
-//    The folder ID.
-//  required option
-//    Can be "public", "password", "description", "expire" or "tags".
-//  required value
-//    The value of the option to be defined.
-//    For "public", can be "true" or "false".
-//    For "password", must be the password.
-//    For "description", must be the description.
-//    For "expire", must be the expiration date in the form of unix timestamp.
-//    For "tags", must be a comma seperated list of tags.
+//
+//	required token
+//	  The access token of an account. Can be retrieved from the profile page.
+//	required folderId
+//	  The folder ID.
+//	required option
+//	  Can be "public", "password", "description", "expire" or "tags".
+//	required value
+//	  The value of the option to be defined.
+//	  For "public", can be "true" or "false".
+//	  For "password", must be the password.
+//	  For "description", must be the description.
+//	  For "expire", must be the expiration date in the form of unix timestamp.
+//	  For "tags", must be a comma seperated list of tags.
 func (c *Client) SetFolderOption(folderId string, option string, value string) error {
 	_, err := ReqResponse[interface{}](c, "PUT", "setFolderOption", nil, map[string]string{
 		"folderId": folderId,
