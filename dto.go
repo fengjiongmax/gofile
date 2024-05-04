@@ -23,7 +23,7 @@ type AccountDetails struct {
 }
 
 type FolderCreated struct {
-	Id           string        `json:"id"`
+	Id           string        `json:"folderId"`
 	Type         string        `json:"type"`
 	Name         string        `json:"name"`
 	ParentFolder string        `json:"parentFolder"`
