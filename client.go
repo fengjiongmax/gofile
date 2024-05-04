@@ -109,7 +109,9 @@ func (c *Client) DeleteContent(contentsId []string) error {
 
 func (c *Client) GetFileDirectLink(contentId string) (*DirectLinkResult, error) {
 	pathName := strings.Join([]string{"contents", contentId, "directlinks"}, "/")
-	resp, err := ReqResponse[DirectLinkResult](c, "POST", pathName, nil, map[string]string{})
+	resp, err := ReqResponse[DirectLinkResult](c, "POST", pathName, nil, map[string]string{
+		"token": c.Token,
+	})
 
 	return resp, err
 }
