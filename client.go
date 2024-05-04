@@ -83,7 +83,7 @@ func (c *Client) GetAccountDetails() (*AccountDetails, error) {
 }
 
 func (c *Client) CreateFolder(parentFolderId string, folderName string) (*FolderCreated, error) {
-	return ReqResponse[FolderCreated](c, "PUT", "createFolder", nil, map[string]string{
+	return ReqResponse[FolderCreated](c, "PUT", "contents/createFolder", nil, map[string]string{
 		"parentFolderId": parentFolderId,
 		"folderName":     folderName,
 		"token":          c.Token,
