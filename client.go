@@ -123,7 +123,7 @@ func (c *Client) UploadFile(
 		return nil, err
 	}
 	defer tmp.close()
-	url := fmt.Sprintf("https://%v.gofile.io/uploadFile", server)
+	url := fmt.Sprintf("https://%v.gofile.io/content/uploadFile", server)
 	err := func() error {
 		fw, err := tmp.w.CreateFormFile("file", fileName)
 		if err != nil {
