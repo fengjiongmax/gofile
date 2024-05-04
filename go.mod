@@ -1,3 +1,3 @@
-module github.com/niuhuan/gofile
+module github.com/fengjiongmax/gofile
 
 go 1.18
