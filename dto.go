@@ -71,6 +71,16 @@ type ContentInfo struct {
 	Link          string `json:"link"`
 }
 
+type DirectLinkResult struct {
+	ExpireTime       int      `json:"expireTime"`
+	SourceIpsAllowed []string `json:"sourceIpsAllowed"`
+	DomainSallowed   []string `json:"domainsAllowed"`
+	Auth             []string `json:"auth"`
+	IsReqLink        bool     `json:"isReqLink"`
+	Id               string   `json:"id"`
+	DirectLink       string   `json:"directLink"`
+}
+
 type TempBufferType int
 
 const (
